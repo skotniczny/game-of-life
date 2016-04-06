@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Game of Life | DOM</title>
+  <link rel="stylesheet" href="style.css">
+  <style type="text/css">
+    #board {
+      line-height: 0;
+      white-space: nowrap;
+    }
+
+    input[type=checkbox] {
+      display: none;
+    }
+
+    label {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      margin: 1px;
+      background-color: #fff;
+      border: 1px solid #222;
+    }
+
+    label:hover {
+      cursor: pointer;
+      background-color: #ddd;
+    }
+
+    input[type=checkbox]:checked + label {
+      background-color: #335B5C;
+    }
+
+    input[type=checkbox]:checked + label:active {
+      background-color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <h1>Conway’s Game of Life</h1>
+  <ul class="menu">
+    <li class="menu-item"><a href="canvas.html" title="Game of Life | Canvas Implementation">Canvas Implementation</a></li>
+    <li class="menu-item"><a class="active" href="dom.html" title="Game of Life | DOM Implementation">DOM Implementation</a></li>
+  </ul>
+  <p class="buttons">
+    <button id="play" autofocus>Stop</button>
+    <button id="next">Step</button>
+    <button id="new">New Board</button>
+    <button id="clear">Clear Board</button>
+    <input id="speed" type="range" min="0" max="100" value="70" step="1">
+  </p>
+  <div id="board"></div>
+  <div class="info">
+    <div class="inner">
+      <h2>Rules</h2>
+      <ol>
+        <li>Any live cell with fewer than two live neighbours dies, as if caused by under-population.</li>
+        <li>Any live cell with two or three live neighbours lives on to the next generation.</li>
+        <li>Any live cell with more than three live neighbours dies, as if by over-population.</li>
+        <li>Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.</li>
+      </ol>
+      <a href="https://en.wikipedia.org/wiki/Conway's_Game_of_Life#Rules">Conway's Game of Life — Wikipedia</a>
+    </div>
+  </div>
+  <!-- Test Grid 10k 
+  <script src="test-grid-10k.js"></script> -->
+  <!-- Test Grid 2.5k 
+  <script src="test-grid-2.5k.js"></script> -->
+  <!-- DOM implementation -->
+  <script src="game-of-life-dom.js"></script>  
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Game of Life | Canvas Implementation</title>
+  <link rel="stylesheet" href="style.css">
+  <style type="text/css">
+    #board {
+      background-color: transparent;
+    }
+  </style>
+</head>
+<body>
+  <h1>Conway’s Game of Life</h1>
+  <ul class="menu">
+    <li class="menu-item"><a class="active" href="canvas.html" title="Game of Life | Canvas Implementation">Canvas Implementation</a></li>
+    <li class="menu-item"><a href="dom.html" title="Game of Life | DOM Implementation">DOM Implementation</a></li>
+  </ul>
+  <p class="buttons">
+    <button id="play" autofocus>Stop</button>
+    <button id="next">Step</button>
+    <button id="new">New Board</button>
+    <button id="clear">Clear Board</button>
+    <input id="speed" type="range" min="0" max="100" value="100" step="1">
+  </p>
+  <canvas id="board" width="800" height="400"></canvas>
+  <div class="info">
+    <div class="inner">
+      <h2>Rules</h2>
+      <ol>
+        <li>Any live cell with fewer than two live neighbours dies, as if caused by under-population.</li>
+        <li>Any live cell with two or three live neighbours lives on to the next generation.</li>
+        <li>Any live cell with more than three live neighbours dies, as if by over-population.</li>
+        <li>Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.</li>
+      </ol>
+      <a href="https://en.wikipedia.org/wiki/Conway's_Game_of_Life#Rules">Conway's Game of Life — Wikipedia</a>
+    </div>
+  </div>
+  <!-- Test Grid 10k 
+  <script src="test-grid-10k.js"></script> -->
+  <!-- Test Grid 2.5k 
+  <script src="test-grid-2.5k.js"></script> -->
+  <!-- Canvas implementation -->
+  <script src="game-of-life-canvas.js"></script>
+</body>
+</html>
