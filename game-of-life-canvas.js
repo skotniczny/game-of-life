@@ -6,7 +6,6 @@ var blockSize = 8;
 var gridWidth = Math.floor(canvas.width / blockSize);
 var gridHeight = Math.floor(canvas.height / blockSize);
 
-
 function Block(col, row) {
   this.col = col;
   this.row = row;
@@ -31,7 +30,7 @@ function makeBoard(width, height) {
   return blocks;
 }
 
-// Make array of booleans.
+/* Make array of booleans. */
 function makeGrid() {
   return checkboxes.map(function(checkbox) {
     return Math.random() < 0.25;

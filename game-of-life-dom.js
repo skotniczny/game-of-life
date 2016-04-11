@@ -28,7 +28,7 @@ function makeBoard(width, height) {
   return nodes;
 }
 
-// Make array of booleans.
+/* Make array of booleans. */
 function makeGrid() {
   return checkboxes.map(function(checkbox) {
     return Math.random() < 0.25;
