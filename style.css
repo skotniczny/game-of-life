@@ -45,6 +45,7 @@ a {
 
 button,
 input[type=range] {
+  -webkit-appearance: none;
   box-sizing: border-box;
   background: linear-gradient(to bottom, #fff 5%, #f6f6f6 100%);
   background-color: #fff;
