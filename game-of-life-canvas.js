@@ -194,13 +194,6 @@ canvas.addEventListener("click", function (event) {
   nextBtn.focus();
 });
 
-//console.time("timer");
-//for (var i = 0; i < 1000; i++) {
-//  grid = nextGeneration();
-//}
-//console.timeEnd("timer");
-//updateBoard();
-
 /* Helper */
 function $(id) {
   return document.getElementById(id);
