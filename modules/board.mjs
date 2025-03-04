@@ -1,17 +1,17 @@
-import Block from "./block.mjs";
+import { makeGrid } from "./dom-utils.mjs";
 
 class Board {
-  constructor(element) {
-    this.blockSize = 8;
-    this.gridWidth = Math.floor(element.width / this.blockSize);
-    this.gridHeight = Math.floor(element.height / this.blockSize);
+  constructor(element, makeBoardFn, { width, height, block = 0, speed = 50 }) {
+    this.gridWidth = width;
+    this.gridHeight = height;
+    this.blockSize = block;
 
     /* Create Board */
-    this.arrayOfBlocks = makeBoard(element, this.gridWidth, this.gridHeight, this.blockSize);
+    this.arrayOfBlocks = makeBoardFn(element, this.gridWidth, this.gridHeight, this.blockSize);
     this.grid = makeGrid(this.arrayOfBlocks);
 
     /* Loop and Timer */
-    this.boardSpeed = 50;
+    this.boardSpeed = speed;
     this.stop = false;
   }
 
@@ -94,22 +94,5 @@ class Board {
   }
 }
 
-/* Make array of booleans */
-function makeGrid(checkboxes) {
-  return checkboxes.map(() => Math.random() < 0.25);
-}
-
-/* Make array of Block objects */
-function makeBoard(element, width, height, blockSize) {
-  const blocks = [];
-  var size = width * height;
-
-  for (let i = 0; i < size; i += 1) {
-    const col = i % width;
-    const row = (i - col) / width;
-    blocks.push(new Block(element.getContext("2d"), col, row, blockSize));
-  }
-  return blocks;
-}
 
 export default Board

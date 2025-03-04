@@ -1,9 +1,31 @@
 import Board from "./modules/board.mjs";
+import Block from "./modules/block.mjs";
 import { qS as $ } from "./modules/dom-utils.mjs";
 
 const canvas = $("board");
 
-const board = new Board(canvas);
+/* Make array of Block objects */
+const makeBoard = (element, width, height, blockSize) => {
+  const blocks = [];
+  var size = width * height;
+
+  for (let i = 0; i < size; i += 1) {
+    const col = i % width;
+    const row = (i - col) / width;
+    blocks.push(new Block(element.getContext("2d"), col, row, blockSize));
+  }
+  return blocks;
+}
+
+const blockSize = 8;
+const size = {
+  width: Math.floor(canvas.width / blockSize),
+  height: Math.floor(canvas.height / blockSize),
+  block: blockSize,
+  speed: 50
+};
+
+const board = new Board(canvas, makeBoard, size);
 board.play();
 
 /* Play Button */
