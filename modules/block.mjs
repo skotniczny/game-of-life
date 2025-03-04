@@ -6,10 +6,10 @@ class Block {
     this.ctx = ctx;
   }
 
-  draw(color) {
+  draw(isChecked) {
     const x = this.col * this.blockSize;
     const y = this.row * this.blockSize;
-    this.ctx.fillStyle = color;
+    this.ctx.fillStyle = (isChecked) ? "#335B5C" : "#ffffff";
     this.ctx.fillRect(x + 1, y + 1, this.blockSize - 1, this.blockSize - 1);
   }
 }

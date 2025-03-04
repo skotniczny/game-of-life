@@ -49,8 +49,7 @@ class Board {
   /* Update board */
   updateBoard() {
     this.arrayOfBlocks.forEach((checkbox, index) => {
-      const color = (this.grid[index]) ? "#335B5C" : "#ffffff";
-      checkbox.draw(color);
+      checkbox.draw(this.grid[index]);
     });
   }
 
