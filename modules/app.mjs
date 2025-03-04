@@ -1,6 +1,6 @@
 import { qS as $ } from './dom-utils.mjs'
 
-export default function(board) {
+export default function app(board) {
   board.play();
 
   /* Play Button */
@@ -17,19 +17,17 @@ export default function(board) {
   
   /* Next Button */
   const nextBtn = $("next");
-  nextBtn.addEventListener("click", function () {
-    board.step();
-  });
+  nextBtn.addEventListener("click", () => board.step());
   
   /* New Button */
   const newBtn = $("new");
-  newBtn.addEventListener("click", function () {
+  newBtn.addEventListener("click", () => {
     board.newGrid();
     nextBtn.focus();
   });
   
   /* Clear Button */
-  $("clear").addEventListener("click", function () {
+  $("clear").addEventListener("click", () => {
     board.clearBoard();
     playBtn.textContent = "Play";
     newBtn.focus();
@@ -46,10 +44,6 @@ export default function(board) {
     return Math.ceil(Math.exp(minv + scale * (position - minp)));
   }
   slider.addEventListener("input", function () {
-    board.speed(logSlider(this.value));
-  });
-  /* For IE */
-  slider.addEventListener("change", function () {
     board.speed(logSlider(this.value));
   });
 }
