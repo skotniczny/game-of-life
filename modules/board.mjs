@@ -17,14 +17,14 @@ class Board {
 
   /* Calculate next generation */
   countNeighbours(x, y) {
-    var directions = [{ x: 0, y: -1 }, { x: 1, y: -1 }, { x: 1, y: 0 }, { x: 1, y: 1 }, { x: 0, y: 1 }, { x: -1, y: 1 }, { x: -1, y: 0 }, { x: -1, y: -1 }];
-    var neighbours = 0;
-    for (var i = 0; i < 8; i++) {
-      var dir = directions[i];
-      var dirX = x + dir.x;
-      var dirY = y + dir.y;
+    const directions = [{ x: 0, y: -1 }, { x: 1, y: -1 }, { x: 1, y: 0 }, { x: 1, y: 1 }, { x: 0, y: 1 }, { x: -1, y: 1 }, { x: -1, y: 0 }, { x: -1, y: -1 }];
+    let neighbours = 0;
+    for (let i = 0; i < 8; i++) {
+      const dir = directions[i];
+      const dirX = x + dir.x;
+      const dirY = y + dir.y;
       if (dirX >= 0 && dirX < this.gridWidth && dirY >= 0 && dirY < this.gridHeight) {
-        var index = dirX + (dirY * this.gridWidth);
+        const index = dirX + (dirY * this.gridWidth);
         neighbours += this.grid[index] ? 1 : 0;
       }
     }
@@ -32,11 +32,10 @@ class Board {
   }
 
   nextGeneration() {
-    var that = this;
-    this.grid = this.grid.map(function (item, index) {
-      var x = index % that.gridWidth;
-      var y = (index - x) / that.gridWidth;
-      var neighbours = that.countNeighbours(x, y);
+    this.grid = this.grid.map((item, index) => {
+      const x = index % this.gridWidth;
+      const y = (index - x) / this.gridWidth;
+      const neighbours = this.countNeighbours(x, y);
       if (neighbours < 2 || neighbours > 3) {
         return false;
       }
@@ -49,9 +48,8 @@ class Board {
 
   /* Update board */
   updateBoard() {
-    var that = this;
-    this.arrayOfBlocks.forEach(function (checkbox, index) {
-      var color = (that.grid[index]) ? "#335B5C" : "#ffffff";
+    this.arrayOfBlocks.forEach((checkbox, index) => {
+      const color = (this.grid[index]) ? "#335B5C" : "#ffffff";
       checkbox.draw(color);
     });
   }
@@ -62,9 +60,7 @@ class Board {
   }
 
   clearBoard() {
-    this.grid = this.grid.map(function () {
-      return false;
-    });
+    this.grid = this.grid.map(() => false);
     this.updateBoard();
     this.pause()
   }
@@ -81,7 +77,6 @@ class Board {
 
   play() {
     this.stop = false;
-    var that = this;
     const loop = () => {
       this.step();
       if (!this.stop) {
@@ -102,19 +97,17 @@ class Board {
 
 /* Make array of booleans */
 function makeGrid(checkboxes) {
-  return checkboxes.map(function () {
-    return Math.random() < 0.25;
-  });
+  return checkboxes.map(() => Math.random() < 0.25);
 }
 
 /* Make array of Block objects */
 function makeBoard(element, width, height, blockSize) {
-  var blocks = [];
+  const blocks = [];
   var size = width * height;
 
-  for (var i = 0; i < size; i += 1) {
-    var col = i % width;
-    var row = (i - col) / width;
+  for (let i = 0; i < size; i += 1) {
+    const col = i % width;
+    const row = (i - col) / width;
     blocks.push(new Block(element.getContext("2d"), col, row, blockSize));
   }
   return blocks;
