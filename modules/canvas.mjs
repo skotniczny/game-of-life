@@ -7,7 +7,7 @@ const canvas = $("board");
 /* Make array of Block objects */
 const makeBoard = (element, width, height, blockSize) => {
   const blocks = [];
-  var size = width * height;
+  const size = width * height;
 
   for (let i = 0; i < size; i += 1) {
     const col = i % width;

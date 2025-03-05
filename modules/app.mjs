@@ -36,11 +36,11 @@ export default function app(board) {
   /* Speed control, min - 2 fps, max - 20 fps */
   const slider = $("speed");
   function logSlider(position) {
-    var minp = slider.min;
-    var maxp = slider.max;
-    var minv = Math.log(500);
-    var maxv = Math.log(50);
-    var scale = (maxv - minv) / (maxp - minp);
+    const minp = slider.min;
+    const maxp = slider.max;
+    const minv = Math.log(500);
+    const maxv = Math.log(50);
+    const scale = (maxv - minv) / (maxp - minp);
     return Math.ceil(Math.exp(minv + scale * (position - minp)));
   }
   slider.addEventListener("input", function () {
