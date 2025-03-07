@@ -40,7 +40,7 @@ el.addEventListener("click", function(event) {
   const target = event.target;
   if (target.tagName === "LABEL") {
     const index = parseInt(target.htmlFor.substring(3), 10);
-    grid[index] = !grid[index];
+    board.checkBlock(index)
   }
 });
 

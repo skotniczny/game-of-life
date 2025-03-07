@@ -66,7 +66,6 @@ class Board {
 
   checkBlock(index) {
     this.grid[index] = !this.grid[index];
-    this.updateBoard();
   }
 
   step() {

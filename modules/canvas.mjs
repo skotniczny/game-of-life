@@ -33,7 +33,7 @@ canvas.addEventListener("click", function (event) {
   const y = Math.floor((event.clientY - rect.top) / board.blockSize);
   const index = x + y * board.gridWidth;
   board.checkBlock(index);
-
+  board.updateBoard();
 });
 
 export default board;
