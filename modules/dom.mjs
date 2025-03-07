@@ -22,7 +22,7 @@ const makeBoard = (element, width, height) => {
 
     const id = "box" + i;
     const label = document.createElement("label");
-    label.setAttribute("for", id);
+    label.htmlFor = id;
     const el = new Block(id);
     nodes.push(el);
 
@@ -42,14 +42,6 @@ el.addEventListener("click", function(event) {
     const index = parseInt(target.htmlFor.substring(3), 10);
     grid[index] = !grid[index];
   }
-  nextBtn.focus();
 });
-
-//console.time("timer");
-//for (var i = 0; i < 1000; i++) {
-//  grid = nextGeneration();
-//}
-//console.timeEnd("timer");
-//updateBoard();
 
 export default board;
